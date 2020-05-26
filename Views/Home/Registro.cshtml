@@ -1,0 +1,33 @@
+@model Mascota
+
+<h1>Formulario de registro de mascotas</h1>
+
+<form asp-action="registro" method="post">
+
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        Nombre : <input asp-for="NombreTemporal">
+    </div>
+
+    <div>
+        Edad : <input asp-for="EdadAproximada">
+    </div>
+
+    <div>
+        Foto : <input asp-for="Foto">
+    </div>
+
+    <div>
+        Tipo : 
+        <select name="TipoID">
+            @foreach (var t in (List<TipoMascota>)ViewBag.Tipos)
+            {
+                <option value="@t.ID">@t.Nombre</option>
+            }
+
+        </select>
+    </div>
+
+    <button>Registrar</button>
+</form>
